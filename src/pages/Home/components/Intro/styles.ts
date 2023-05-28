@@ -22,7 +22,7 @@ export const IntroContainer = styled.section`
 
     h1 {
       color: ${({ theme }) => theme.colors["base-title"]};
-      font-weight: bold;
+      font-weight: 800;
       font-size: 3rem;
       line-height: 3.875rem;
       font-family: ${({ theme }) => theme.fonts.title};
