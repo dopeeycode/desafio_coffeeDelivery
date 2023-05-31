@@ -1,4 +1,17 @@
-import { AddressContent, CompletedOrder, Container, ContainerMethodPayment, ContentAfterContainer, InputContainer, MethodPaymentButtons, NeighborhoodCityAndUF, NumberAndComplement } from "./styles";
+import CartList from "./components/CartList";
+
+import { 
+    AddressContent, 
+    CompletedOrder, 
+    Container, 
+    ContainerMethodPayment, 
+    ContentAfterContainer, 
+    InputContainer, 
+    MethodPaymentButtons, 
+    NeighborhoodCityAndUF, 
+    NumberAndComplement 
+  } from "./styles";
+
 import { MapPinLine, CurrencyDollar, CreditCard, Bank, Money } from 'phosphor-react'
 
 export default function CompleteOrderPage() {
@@ -59,9 +72,7 @@ export default function CompleteOrderPage() {
         </ContainerMethodPayment>
         </div>
       </Container>
-      <div>
-        teste
-      </div>
+      <CartList />
     </CompletedOrder>
   )
 }

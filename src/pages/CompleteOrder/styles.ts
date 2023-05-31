@@ -4,9 +4,9 @@ export const CompletedOrder = styled.main`
 
   margin-top: 11rem;
   display: flex;
+  gap: 2rem;
   justify-content: space-between;
 
-  flex-wrap: wrap;
   
 `
 
@@ -18,7 +18,6 @@ export const Container = styled.section`
   background: #fff;
 
   h3 {
-    margin-bottom: .938rem;
 
     font-family: ${({ theme }) => theme.fonts.title};
     font-size: 1.125rem;
@@ -126,6 +125,8 @@ export const ContainerMethodPayment = styled.div`
   align-items: flex-start;
   flex-direction: column;
   gap: .75rem;
+
+  border-radius: 6px;
   background: ${({ theme }) => theme.colors["base-card"]};
 
   > div {
