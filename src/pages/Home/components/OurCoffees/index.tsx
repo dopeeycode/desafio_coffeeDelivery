@@ -19,14 +19,13 @@ export default function OurCoffees() {
   }, [])
 
   console.log(coffees)
-
   return (
     <OurCoffeesContainer>
       <h1>Nossos cafés</h1>
 
       <CoffeesList>
         {coffees.map(coffee => (
-          <CoffeesCard key={coffee.id} coffee={coffee} />
+          <CoffeesCard key={crypto.randomUUID()} coffee={coffee} />
         ))}
       </CoffeesList>
     </OurCoffeesContainer>

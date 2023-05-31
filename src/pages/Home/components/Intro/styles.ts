@@ -5,7 +5,7 @@ import { rgba } from 'polished'
 
 
 export const IntroContainer = styled.section`
-  margin-top: 7rem;
+  margin-top: 13rem;
   display: flex;
   background: ${({ theme }) => `url(${IntroBG}) no-repeat center,
       linear-gradient(
