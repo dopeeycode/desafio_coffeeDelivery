@@ -1,7 +1,14 @@
 import { Trash } from 'phosphor-react'
 import * as S from './styles'
+import { useContext } from 'react'
+import { CartContext } from '../../../../hooks/useCart'
 
 export default function CartList() {
+
+  const data = useContext(CartContext)  
+
+  console.log(data)
+
   return (
     <S.SelectedCoffessContainer>
         <h3>Cafés selecionados</h3>
