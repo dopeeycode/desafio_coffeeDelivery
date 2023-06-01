@@ -3,17 +3,17 @@ import { defaultTheme } from './styles/themes/default'
 import { GlobalStyle } from './styles/global'
 import { BrowserRouter } from 'react-router-dom'
 import Router from './Routes'
-import CartProvider from './hooks/useCart'
+import CartContextProvider from './contexts/useCart'
 
 export default function App() {
   return (
-    <CartProvider>
+    <CartContextProvider>
       <ThemeProvider theme={defaultTheme}>
         <GlobalStyle />
         <BrowserRouter>
           <Router />
         </BrowserRouter>
       </ThemeProvider>
-    </CartProvider>
+    </CartContextProvider>
   )
 }

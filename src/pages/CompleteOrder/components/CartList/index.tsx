@@ -1,56 +1,36 @@
 import { Trash } from 'phosphor-react'
 import * as S from './styles'
-import { useContext } from 'react'
-import { CartContext } from '../../../../hooks/useCart'
+import { formatMoney } from '../../../../ultils/formatPrice'
+import { useCart } from '../../../../hooks/useCart'
 
 export default function CartList() {
 
-  const data = useContext(CartContext)  
-
-  console.log(data)
+  const { cartItems } = useCart()
 
   return (
     <S.SelectedCoffessContainer>
         <h3>Cafés selecionados</h3>
         <S.OrderedContainer>
-          <div className='CoffeeCartItem'>
-            <img src='/coffees/americano.png' alt="" />
-            <div className='Content_items'>
-              <span>Expresso Tradicional</span>
-              <div className='ContainerToolsItems'>
-                <S.IncrementAndDescrement>
-                  <button type="button">-</button>
-                  <span>1</span>
-                  <button type="button">+</button>
-                </S.IncrementAndDescrement>
-                <button type='button' className='RemoveItemButton'>
-                  <Trash size={17} />
-                  REMOVE
-                </button>
-              
+          {cartItems.map((cartItem) => (
+            <div key={cartItem.id} className='CoffeeCartItem'>
+              <img src={`/coffees/${cartItem.photo}`} alt="" />
+              <div className='Content_items'>
+                <span>{cartItem.name}</span>
+                <div className='ContainerToolsItems'>
+                  <S.IncrementAndDescrement>
+                    <button type="button">-</button>
+                    <span>1</span>
+                    <button type="button">+</button>
+                  </S.IncrementAndDescrement>
+                  <button type='button' className='RemoveItemButton'>
+                    <Trash size={17} />
+                    REMOVE
+                  </button>
+                </div>
               </div>
+              <strong>R$ {formatMoney(cartItem.price)}</strong>
             </div>
-            <strong>R$ 9,90</strong>
-          </div>
-          <div className='CoffeeCartItem'>
-            <img src='/coffees/latte.png' alt="" />
-            <div className='Content_items'>
-              <span>Latte</span>
-              <div className='ContainerToolsItems'>
-                <S.IncrementAndDescrement>
-                  <button type="button">-</button>
-                  <span>1</span>
-                  <button type="button">+</button>
-                </S.IncrementAndDescrement>
-                <button type='button' className='RemoveItemButton'>
-                  <Trash size={17} />
-                  REMOVE
-                </button>
-              
-              </div>
-            </div>
-            <strong>R$ 19,80</strong>
-          </div>
+          ))}
           <S.AllPrices>
             <div>
               <span>Total de itens</span>

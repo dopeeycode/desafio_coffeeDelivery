@@ -1,12 +1,23 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import CoffeesCard from "../CoffeesCard";
 import { CoffeesList, OurCoffeesContainer } from "./styles";
-import { CartContext } from "../../../../hooks/useCart";
+import { api } from "../../../../services/api";
+import { Coffees } from "../../../../@types/Coffes";
 
 
 export default function OurCoffees() {
+  const[coffees, setCoffees] = useState<Coffees[]>([])
 
-  const coffees = useContext(CartContext)
+  useEffect(() => {
+    async function loadData (){
+      const { data } = await api.get('/coffe')
+      
+      setCoffees(data[0].contents)
+    }
+
+    loadData()
+  }, [])
+
   
   return (
     <OurCoffeesContainer>
