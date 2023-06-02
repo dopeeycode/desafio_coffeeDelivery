@@ -27,7 +27,7 @@ export default function CoffeesCard({ coffee }: CoffeeProps) {
   function handleAddToCart(){
     const coffeeToAdd = {
       ...coffee,
-      quantity: 1
+      quantity,
     }
 
     addCoffeToCart(coffeeToAdd)
@@ -52,7 +52,7 @@ export default function CoffeesCard({ coffee }: CoffeeProps) {
         </BuyContent>
         <IncrementAndDescrement>
           <div>
-            <button onClick={handleDecrease} type="button">-</button>
+            <button onClick={handleDecrease} disabled={quantity <= 1} type="button">-</button>
             <span>{quantity}</span>
             <button onClick={handleIncrease} type="button">+</button>
           </div>

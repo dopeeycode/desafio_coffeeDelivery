@@ -4,5 +4,5 @@ export interface Coffees{
   photo: string;
   price: number;
   tags: string[];
-  id: string;
+  _id: string;
 }
