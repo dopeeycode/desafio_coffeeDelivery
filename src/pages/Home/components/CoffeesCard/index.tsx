@@ -5,19 +5,42 @@ import { AddToCartButton, BuyCardContainer, BuyContent, CoffeesCardContainer, In
 import { formatMoney } from "../../../../ultils/formatPrice";
 import { useCart } from "../../../../hooks/useCart";
 import { useState } from "react";
+import { toast, Toaster } from 'react-hot-toast'
+
 
 interface CoffeeProps {
   coffee: Coffees
 }
 
 
+interface NotifyMessageType{
+  message: string
+  type: 'success' | 'error' | 'promise'
+}
+
 
 export default function CoffeesCard({ coffee }: CoffeeProps) {
   const [quantity, setQuantity] = useState(1)
   const { addCoffeToCart } = useCart()
 
+  
   function handleIncrease() {
     setQuantity((state) => state + 1)
+  }
+
+  function notifyMessage({ message, type}: NotifyMessageType){
+    if(type === 'success') {
+      toast.success(message, {
+        icon: '👏',
+        style: {
+          borderRadius: '9px',
+          boxShadow: '0px 1px 8px -4px rgba(0, 0, 0, .05)'
+        }
+      })
+    }
+    else if(type === 'error') {
+      toast.error(message)
+    }
   }
 
   function handleDecrease() {
@@ -31,10 +54,16 @@ export default function CoffeesCard({ coffee }: CoffeeProps) {
     }
 
     addCoffeToCart(coffeeToAdd)
+    notifyMessage({
+      type: 'success',
+      message: 'Adicionado ao carrinho com sucesso.'
+    })
+
   }
   
   return (
     <CoffeesCardContainer>
+      <Toaster />
       <img src={`/coffees/${coffee.photo}`} alt="" />
       <TagsCoffees>
         {coffee.tags.map(tag => (
@@ -58,6 +87,7 @@ export default function CoffeesCard({ coffee }: CoffeeProps) {
           </div>
 
           <AddToCartButton onClick={handleAddToCart} type="button">
+
             <ShoppingCartSimple size={24} weight="fill" />
           </AddToCartButton>
         </IncrementAndDescrement>

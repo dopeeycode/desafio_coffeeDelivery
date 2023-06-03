@@ -8,6 +8,7 @@ export const CoffeesCardContainer = styled.div `
   align-items: center;
   background: ${({ theme }) => theme.colors["base-card"]};
 
+
   img {
     margin-top: -35px;
     width: 7.5rem;

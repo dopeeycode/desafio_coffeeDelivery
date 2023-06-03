@@ -11,6 +11,7 @@ export default function CartItems() {
     removeCoffeToCart(coffeeId)
   }
 
+
   return (
     <>
       {cartItems.map((cartItem) => (
@@ -24,9 +25,12 @@ export default function CartItems() {
               <span>{cartItem.quantity}</span>
               <button type="button">+</button>
             </S.IncrementAndDescrement>
-            <button onClick={() => handleRemoveItemToCart(cartItem._id)} type='button' className='RemoveItemButton'>
+            <button 
+              onClick={() => handleRemoveItemToCart(cartItem._id)} 
+              type='button' className='RemoveItemButton'
+              >
               <Trash size={17} />
-              REMOVE
+              REMOVER
             </button>
           </div>
         </div>

@@ -16,6 +16,8 @@ interface CartContextProviderProps {
   children: ReactNode
 }
 
+
+
 export const CartContext = createContext({} as CartContextType)
 
 export default function CartContextProvider({ children }: CartContextProviderProps) {
@@ -27,7 +29,6 @@ export default function CartContextProvider({ children }: CartContextProviderPro
     const newCart = produce(cartItems, (draft) => {
       if(coffeeAlreadyExistsInCart < 0) {
         draft.push(coffee)
-        alert('adicionado')
       }else{
         draft[coffeeAlreadyExistsInCart].quantity += coffee.quantity
       }
